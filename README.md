@@ -2,11 +2,12 @@
 
 ## Introduzione
 
-Image Processing è un proof of concept applicativo che consente la crazione di prototipazioni di filtri di immagine
+Image Processing è un proof of concept applicativo che consente la creazione e prototipazione rapida di filtri immagine
 
 ## Creazione di un filtro
 
-...
+Per creare un filtro è necessario estendere la clasee ImageFilter.
+Sono presenti due classi di utility: ImageFilterRaster e ImageFilterIndexed
 
 **Esempio**:
 
@@ -60,7 +61,6 @@ public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> 
 		private boolean[] filterModes;
 
 	}
-
 }
 ```
 
@@ -74,7 +74,7 @@ public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> 
 		new ImageFilterMatrix(),
 		new ImageFilterAberration(),
 		new ImageFilterFlip(),
-    // ... //
+        // ... //
 	};
 ```
 

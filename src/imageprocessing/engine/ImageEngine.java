@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import imageprocessing.accessor.ImageAccessorBuffered;
 import imageprocessing.filter.ImageFilter;
 import imageprocessing.filter.option.ImageFilterSettings;
+import imageprocessing.filters.ImageFilterAberration;
 import imageprocessing.filters.ImageFilterExample;
 import imageprocessing.ui.options.ImageFilterOptionUIBuilder;
 import imageprocessing.utils.ImageSnapshots;
@@ -17,7 +18,8 @@ import javafx.scene.layout.VBox;
 public class ImageEngine {
 
 	public static final ImageFilter<?>[] IMAGE_FILTERS = {
-		new ImageFilterExample()
+		new ImageFilterExample(),
+		new ImageFilterAberration()
 	};
 
 	private ImageFilter<?> imageFilter;
