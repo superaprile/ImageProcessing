@@ -57,4 +57,8 @@ public class ImageUtils {
 		}
 	}
 
+	public static double map(double x, double minX, double maxX, double minY, double maxY) {
+	     return (x - minX) * (maxY - minY) / (maxX - minX) + minY;
+	}
+
 }
