@@ -10,6 +10,7 @@ import imageprocessing.filter.option.ImageFilterSettings;
 import imageprocessing.filters.ImageFilterAberration;
 import imageprocessing.filters.ImageFilterEdge;
 import imageprocessing.filters.ImageFilterExample;
+import imageprocessing.filters.ImageFilterSepia;
 import imageprocessing.filters.ImageFilterGreyscale;
 import imageprocessing.filters.ImageFilterInverter;
 import imageprocessing.ui.options.ImageFilterOptionUIBuilder;
@@ -24,8 +25,9 @@ public class ImageEngine {
 		new ImageFilterExample(),
 		new ImageFilterAberration(),
 		new ImageFilterEdge(),
-		new ImageFilterGreyscale(),
 		new ImageFilterInverter()
+		new ImageFilterSepia(),
+		new ImageFilterGreyscale()
 	};
 
 	private ImageFilter<?> imageFilter;
