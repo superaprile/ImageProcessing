@@ -8,6 +8,7 @@ import imageprocessing.accessor.ImageAccessorBuffered;
 import imageprocessing.filter.ImageFilter;
 import imageprocessing.filter.option.ImageFilterSettings;
 import imageprocessing.filters.ImageFilterAberration;
+import imageprocessing.filters.ImageFilterBorder;
 import imageprocessing.filters.ImageFilterContrast;
 import imageprocessing.filters.ImageFilterEdge;
 import imageprocessing.filters.ImageFilterExample;
@@ -36,6 +37,7 @@ public class ImageEngine {
 		new ImageFilterInverter(),
 		new ImageFilterMatrix(),
 		new ImageFilterSepia(),
+		new ImageFilterBorder()
 	};
 
 	private ImageFilter<?> imageFilter;
