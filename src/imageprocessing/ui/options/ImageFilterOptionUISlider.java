@@ -7,8 +7,14 @@ import java.lang.annotation.Target;
 import java.util.function.Consumer;
 
 import imageprocessing.ui.options.ImageFilterOptionUISlider.ImageFilterOptionSlider;
+import imageprocessing.utils.ImageUtils;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.text.TextAlignment;
 
 public class ImageFilterOptionUISlider extends ImageFilterOptionUI<ImageFilterOptionSlider, Double> {
 
@@ -18,21 +24,37 @@ public class ImageFilterOptionUISlider extends ImageFilterOptionUI<ImageFilterOp
 
 	@Override
 	protected Node build(ImageFilterOptionSlider annotation, Consumer<Double> listener) {
+		HBox sliderContainer = new HBox();
+		sliderContainer.setAlignment(Pos.CENTER);
+		sliderContainer.setSpacing(10);
+
+		Label sliderDisplay = new Label();
+		sliderDisplay.setTextAlignment(TextAlignment.CENTER);
+		sliderDisplay.setAlignment(Pos.CENTER);
+		sliderDisplay.setPrefWidth(50);
+
 		Slider slider = new Slider();
+		slider.setMin(annotation.optionSliderMin());
+		slider.setMax(annotation.optionSliderMax());
 
 		slider.valueProperty().addListener((valueProperty, valueOld, valueNew) -> {
+			sliderDisplay.setText(String.format("%.2f%%", ImageUtils.map(valueNew.doubleValue(), slider.getMin(), slider.getMax(), 0, 100)));
 			listener.accept(valueNew.doubleValue());
 		});
 
 		slider.setValue(annotation.optionSliderDefault());
-		slider.setMin(annotation.optionSliderMin());
-		slider.setMax(annotation.optionSliderMax());
+
 
 		slider.setMajorTickUnit(annotation.optionSliderStep());
 		slider.setMinorTickCount(0);
 		slider.setSnapToTicks(true);
 
-		return slider;
+		HBox.setHgrow(slider, Priority.ALWAYS);
+
+		sliderContainer.getChildren()
+			.addAll(sliderDisplay, slider);
+
+		return sliderContainer;
 	}
 
 	@Target(ElementType.FIELD)

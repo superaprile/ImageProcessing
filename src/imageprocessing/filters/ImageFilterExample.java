@@ -58,7 +58,7 @@ public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> 
 			optionModesNames = { "Flag1", "Flag2", "Flag3" }
 		)
 		@Getter
-		private boolean[] filterModes;
+		private int filterModes;
 
 	}
 
