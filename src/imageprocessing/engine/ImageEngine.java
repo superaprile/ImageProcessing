@@ -18,6 +18,7 @@ import imageprocessing.filters.ImageFilterGreyscale;
 import imageprocessing.filters.ImageFilterInverter;
 import imageprocessing.filters.ImageFilterMatrix;
 import imageprocessing.filters.ImageFilterSepia;
+import imageprocessing.filters.ImageFilterVignette;
 import imageprocessing.ui.options.ImageFilterOptionUIBuilder;
 import imageprocessing.utils.ImageSnapshots;
 import imageprocessing.utils.ImageUtils;
@@ -37,6 +38,7 @@ public class ImageEngine {
 		new ImageFilterInverter(),
 		new ImageFilterMatrix(),
 		new ImageFilterSepia(),
+		new ImageFilterVignette(),
 		new ImageFilterBorder()
 	};
 
