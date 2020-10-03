@@ -18,7 +18,6 @@ public class ImageFilterGreyscale extends ImageFilterRaster<ImageFilterGreyscale
 
 	@Override
 	public void filterImagePixel(ImageFilterGreyscaleSettings filterSettings, ImageAccessor filterImage, int imagePixelX, int imagePixelY, ImageColor imagePixelColor) {
-
 		int channelR = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_R);
 		int channelG = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_G);
 		int channelB = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_B);
