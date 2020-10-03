@@ -40,6 +40,31 @@ public class ImageColor {
 	}
 
 	/**
+	 * Inizializza il colore dai canali
+	 *
+	 * @param colorChannelA	Il canale alfa (0 - 255)
+	 * @param colorChannelR Il canale rosso (0 - 255)
+	 * @param colorChannelG Il canale verde (0 - 255)
+	 * @param colorChannelB Il canale blu (0 - 255)
+	 */
+	public ImageColor(int colorChannelA, int colorChannelR, int colorChannelG, int colorChannelB) {
+		colorChannels = new int[] { colorChannelA, colorChannelR, colorChannelG, colorChannelB };
+	}
+
+	/**
+	 * Inizializza il colore dai canali
+	 *
+	 * @param colorChannelR Il canale rosso (0 - 255)
+	 * @param colorChannelG Il canale verde (0 - 255)
+	 * @param colorChannelB Il canale blu (0 - 255)
+	 *
+	 */
+	public ImageColor(int colorChannelR, int colorChannelG, int colorChannelB) {
+		this(0xFF, colorChannelR, colorChannelG, colorChannelB);
+	}
+
+
+	/**
 	 * Aggiunge un valore al canale specificato.
 	 * Il metodo utilizza la normalizzazione con {@link #colorChannelSpin(int)}
 	 *
