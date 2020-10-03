@@ -39,8 +39,8 @@ public class ImageFilterGreyscale extends ImageFilterRaster<ImageFilterGreyscale
 	public static class ImageFilterGreyscaleSettings extends ImageFilterSettings {
 
 		@ImageFilterOption(
-			optionTitle = "Greyscale Type",
-			optionDescription = "Different methods has different weight for each RGB channel"
+			optionTitle = "Tipologia",
+			optionDescription = "Tipologia della scala di grigi"
 		)
 		@ImageFilterOptionModes(
 			optionModeDefault = 1,

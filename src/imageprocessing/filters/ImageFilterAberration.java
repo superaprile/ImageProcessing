@@ -12,7 +12,7 @@ import lombok.Getter;
 public class ImageFilterAberration extends ImageFilterRaster<ImageFilterAberrationSettings> {
 
 	public ImageFilterAberration() {
-		super(ImageFilterAberrationSettings.class, "Chromatic Aberration");
+		super(ImageFilterAberrationSettings.class, "Aberrazione Cromatica");
 	}
 
 	@Override
