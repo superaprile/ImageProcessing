@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
+import javafx.scene.text.TextAlignment;
 
 public class ImageFilterOptionUISlider extends ImageFilterOptionUI<ImageFilterOptionSlider, Double> {
 
@@ -28,11 +29,13 @@ public class ImageFilterOptionUISlider extends ImageFilterOptionUI<ImageFilterOp
 		sliderContainer.setSpacing(10);
 
 		Label sliderDisplay = new Label();
+		sliderDisplay.setTextAlignment(TextAlignment.CENTER);
+		sliderDisplay.setAlignment(Pos.CENTER);
+		sliderDisplay.setPrefWidth(50);
 
 		Slider slider = new Slider();
 		slider.setMin(annotation.optionSliderMin());
 		slider.setMax(annotation.optionSliderMax());
-
 
 		slider.valueProperty().addListener((valueProperty, valueOld, valueNew) -> {
 			sliderDisplay.setText(String.format("%.2f%%", ImageUtils.map(valueNew.doubleValue(), slider.getMin(), slider.getMax(), 0, 100)));

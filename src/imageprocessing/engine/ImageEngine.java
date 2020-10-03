@@ -8,11 +8,14 @@ import imageprocessing.accessor.ImageAccessorBuffered;
 import imageprocessing.filter.ImageFilter;
 import imageprocessing.filter.option.ImageFilterSettings;
 import imageprocessing.filters.ImageFilterAberration;
+import imageprocessing.filters.ImageFilterContrast;
 import imageprocessing.filters.ImageFilterEdge;
 import imageprocessing.filters.ImageFilterExample;
+import imageprocessing.filters.ImageFilterFlag;
+import imageprocessing.filters.ImageFilterFlip;
 import imageprocessing.filters.ImageFilterGreyscale;
 import imageprocessing.filters.ImageFilterInverter;
-import imageprocessing.filters.ImageFilterContrast;
+import imageprocessing.filters.ImageFilterMatrix;
 import imageprocessing.filters.ImageFilterSepia;
 import imageprocessing.ui.options.ImageFilterOptionUIBuilder;
 import imageprocessing.utils.ImageSnapshots;
@@ -24,13 +27,15 @@ public class ImageEngine {
 
 	public static final ImageFilter<?>[] IMAGE_FILTERS = {
 		new ImageFilterAberration(),
+		new ImageFilterContrast(),
 		new ImageFilterEdge(),
-		new ImageFilterContrast()
+		new ImageFilterExample(),
+		new ImageFilterFlag(),
+		new ImageFilterFlip(),
 		new ImageFilterGreyscale(),
 		new ImageFilterInverter(),
-		new ImageFilterExample(),
+		new ImageFilterMatrix(),
 		new ImageFilterSepia(),
-		new ImageFilterEdge(),
 	};
 
 	private ImageFilter<?> imageFilter;
