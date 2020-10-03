@@ -21,6 +21,4 @@ public class ImageFilterInverter extends ImageFilterRaster<ImageFilterInverterSe
 	public static class ImageFilterInverterSettings extends ImageFilterSettings {
 
 	}
-
-
 }
