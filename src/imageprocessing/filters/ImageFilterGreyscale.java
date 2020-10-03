@@ -19,24 +19,16 @@ public class ImageFilterGreyscale extends ImageFilterRaster<ImageFilterGreyscale
 	@Override
 	public void filterImagePixel(ImageFilterGreyscaleSettings filterSettings, ImageAccessor filterImage, int imagePixelX, int imagePixelY, ImageColor imagePixelColor) {
 		
-		int red = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_R);
-		int green = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_G);
-		int blue = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_B);
+		int channelR = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_R);
+		int channelG = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_G);
+		int channelB = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_B);
 
-		int channelValue = 0;
-		
-		
 		//Formula found on https://www.rapidtables.com/convert/image/rgb-to-grayscale.html
-		switch(filterSettings.filterModes) {
-			case 0:
-				channelValue = (int) ( 0.2126 * red + 0.7152 * green + 0.0722 * blue);
-				break;
-			case 1:
-				channelValue = (int) ( 0.2126 * red + 0.7152 * green + 0.0722 * blue);
-				break;
-			case 2:
-				channelValue = (int) ( 0.2126 * red + 0.7152 * green + 0.0722 * blue);
-				break;
+		int channelValue = 0;
+		switch (filterSettings.getFilterModes()) {
+			case 0: channelValue = (int) (0.2126 * channelR + 0.7152 * channelG + 0.0722 * channelB); break;
+			case 1: channelValue = (int) (0.2126 * channelR + 0.7152 * channelG + 0.0722 * channelB); break;
+			case 2: channelValue = (int) (0.2126 * channelR + 0.7152 * channelG + 0.0722 * channelB); break;
 		}
 		
 		//On greyscale each channel has the same value because R = G = B
