@@ -8,6 +8,7 @@ import imageprocessing.accessor.ImageAccessorBuffered;
 import imageprocessing.filter.ImageFilter;
 import imageprocessing.filter.option.ImageFilterSettings;
 import imageprocessing.filters.ImageFilterAberration;
+import imageprocessing.filters.ImageFilterBorder;
 import imageprocessing.filters.ImageFilterContrast;
 import imageprocessing.filters.ImageFilterEdge;
 import imageprocessing.filters.ImageFilterExample;
@@ -18,6 +19,7 @@ import imageprocessing.filters.ImageFilterInverter;
 import imageprocessing.filters.ImageFilterMatrix;
 import imageprocessing.filters.ImageFilterMirror;
 import imageprocessing.filters.ImageFilterSepia;
+import imageprocessing.filters.ImageFilterVignette;
 import imageprocessing.ui.options.ImageFilterOptionUIBuilder;
 import imageprocessing.utils.ImageSnapshots;
 import imageprocessing.utils.ImageUtils;
@@ -38,6 +40,8 @@ public class ImageEngine {
 		new ImageFilterMatrix(),
 		new ImageFilterMirror(),
 		new ImageFilterSepia(),
+		new ImageFilterVignette(),
+		new ImageFilterBorder()
 	};
 
 	private ImageFilter<?> imageFilter;
