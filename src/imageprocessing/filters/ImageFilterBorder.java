@@ -28,7 +28,7 @@ public class ImageFilterBorder extends ImageFilter<ImageFilterBorderSettings> {
 		int borderWidthX =  (int) ((filterSettings.getFilterBordWidthXSlider() * filterImage.getImageDimensionW()) / 100);
 		int borderWidthY =  (filterSettings.filterBordWidthModes == 0) ? borderWidthX :  (int) (filterSettings.getFilterBordWidthYSlider() * filterImage.getImageDimensionH()) / 100;
 		
-		ImageColor borderColor = new ImageColor(0xFFFFFFFF);
+		ImageColor borderColor = new ImageColor(borderChannelR, borderChannelG, borderChannelB);
 		
 		//Horizontal Border
 		for (int x = 0; x < filterImage.getImageDimensionW(); x++) {
