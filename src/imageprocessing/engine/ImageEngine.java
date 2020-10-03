@@ -24,12 +24,12 @@ public class ImageEngine {
 
 	public static final ImageFilter<?>[] IMAGE_FILTERS = {
 		new ImageFilterAberration(),
-		new ImageFilterEdge(),
-		new ImageFilterContrast()
 		new ImageFilterGreyscale(),
+		new ImageFilterContrast(),
 		new ImageFilterInverter(),
 		new ImageFilterExample(),
 		new ImageFilterSepia(),
+		new ImageFilterEdge(),
 		new ImageFilterEdge(),
 	};
 
