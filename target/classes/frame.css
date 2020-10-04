@@ -234,3 +234,26 @@
 .slider .thumb {
     -fx-background-color: -color-primary;
 }
+
+.text-field {
+    -fx-border-color: -color-primary;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-background-radius: 0px;
+    -fx-background-color: transparent;
+
+    -fx-text-fill: -color-text;
+    -fx-prompt-text-fill: derive(-fx-text-fill, -50%);
+
+    -fx-font-size: 1em;
+    -fx-pref-height: 30px;
+}
+
+.text-field:focused {
+    -fx-border-color: -color-secondary;
+}
+
+.text-field:readonly {
+    -fx-border-color: -color-primary;
+    -fx-border-style: dashed;
+    -fx-border-width: 2px;
+}

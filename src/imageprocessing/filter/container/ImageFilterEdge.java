@@ -1,13 +1,13 @@
-package imageprocessing.filters;
+package imageprocessing.filter.container;
 
 import java.util.Objects;
 
 import imageprocessing.accessor.ImageAccessor;
 import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilterRaster;
+import imageprocessing.filter.container.ImageFilterEdge.ImageFilterEdgeSettings;
 import imageprocessing.filter.option.ImageFilterOption;
 import imageprocessing.filter.option.ImageFilterSettings;
-import imageprocessing.filters.ImageFilterEdge.ImageFilterEdgeSettings;
 import imageprocessing.ui.options.ImageFilterOptionUISlider.ImageFilterOptionSlider;
 import lombok.Getter;
 

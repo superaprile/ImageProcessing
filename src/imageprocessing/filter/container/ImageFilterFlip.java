@@ -1,11 +1,11 @@
-package imageprocessing.filters;
+package imageprocessing.filter.container;
 
 import imageprocessing.accessor.ImageAccessor;
 import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilterRaster;
+import imageprocessing.filter.container.ImageFilterFlip.ImageFilterFlipSettings;
 import imageprocessing.filter.option.ImageFilterOption;
 import imageprocessing.filter.option.ImageFilterSettings;
-import imageprocessing.filters.ImageFilterFlip.ImageFilterFlipSettings;
 import imageprocessing.ui.options.ImageFilterOptionUIModes.ImageFilterOptionModes;
 import lombok.Getter;
 
@@ -27,16 +27,16 @@ public class ImageFilterFlip extends ImageFilterRaster<ImageFilterFlipSettings> 
 
 	public static class ImageFilterFlipSettings extends ImageFilterSettings {
 
-			@ImageFilterOption(
-				optionTitle = "Direzione",
-				optionDescription = "Direzione in cui effettuare il flip"
-			)
-			@ImageFilterOptionModes(
-				optionModeDefault = 0,
-				optionModesNames = { "Orizzontale", "Verticale" }
-			)
-			@Getter
-			private int filterFlip;
+		@ImageFilterOption(
+			optionTitle = "Direzione",
+			optionDescription = "Direzione in cui effettuare il flip"
+		)
+		@ImageFilterOptionModes(
+			optionModeDefault = 0,
+			optionModesNames = { "Orizzontale", "Verticale" }
+		)
+		@Getter
+		private int filterFlip;
 
 	}
 

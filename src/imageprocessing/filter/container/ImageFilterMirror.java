@@ -1,10 +1,10 @@
-package imageprocessing.filters;
+package imageprocessing.filter.container;
 
 import imageprocessing.accessor.ImageAccessor;
 import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilterRaster;
+import imageprocessing.filter.container.ImageFilterMirror.ImageFilterMirrorSettings;
 import imageprocessing.filter.option.ImageFilterSettings;
-import imageprocessing.filters.ImageFilterMirror.ImageFilterMirrorSettings;
 
 public class ImageFilterMirror extends ImageFilterRaster<ImageFilterMirrorSettings> {
 
@@ -14,16 +14,16 @@ public class ImageFilterMirror extends ImageFilterRaster<ImageFilterMirrorSettin
 
 	@Override
 	public void filterImagePixel(ImageFilterMirrorSettings filterSettings, ImageAccessor filterImage, int imagePixelX, int imagePixelY, ImageColor imagePixelColor) {
-	
-		double half = filterImage.getImageDimensionW() / 2D;
-		
-		if (imagePixelX > half)
-			imagePixelColor.setColor(filterImage.getImagePixel((int) (half - (imagePixelX - half)), imagePixelY));
-		
+
+		double imageHalf = filterImage.getImageDimensionW() / 2D;
+
+		if (imagePixelX > imageHalf) {
+			imagePixelColor.setColor(filterImage.getImagePixel((int) (imageHalf - (imagePixelX - imageHalf)), imagePixelY));
+		}
 
 	}
 
-	public static class ImageFilterMirrorSettings extends ImageFilterSettings {		
+	public static class ImageFilterMirrorSettings extends ImageFilterSettings {
 
 	}
 

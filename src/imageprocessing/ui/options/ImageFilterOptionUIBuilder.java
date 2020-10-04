@@ -16,6 +16,8 @@ public class ImageFilterOptionUIBuilder {
 		new ImageFilterOptionUISlider(),
 		new ImageFilterOptionUIFlags(),
 		new ImageFilterOptionUIModes(),
+		new ImageFilterOptionUIColor(),
+		new ImageFilterOptionUIText(),
 	};
 
 	public static VBox buildFor(ImageFilterSettings filterSettings) {

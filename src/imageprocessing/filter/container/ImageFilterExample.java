@@ -1,15 +1,18 @@
-package imageprocessing.filters;
+package imageprocessing.filter.container;
 
 import java.util.function.Consumer;
 
 import imageprocessing.accessor.ImageAccessor;
+import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilter;
+import imageprocessing.filter.container.ImageFilterExample.ImageFilterExampleSettings;
 import imageprocessing.filter.option.ImageFilterOption;
 import imageprocessing.filter.option.ImageFilterSettings;
-import imageprocessing.filters.ImageFilterExample.ImageFilterExampleSettings;
+import imageprocessing.ui.options.ImageFilterOptionUIColor.ImageFilterOptionColor;
 import imageprocessing.ui.options.ImageFilterOptionUIFlags.ImageFilterOptionFlags;
 import imageprocessing.ui.options.ImageFilterOptionUIModes.ImageFilterOptionModes;
 import imageprocessing.ui.options.ImageFilterOptionUISlider.ImageFilterOptionSlider;
+import imageprocessing.ui.options.ImageFilterOptionUIText.ImageFilterOptionText;
 import lombok.Getter;
 
 public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> {
@@ -27,7 +30,7 @@ public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> 
 
 		@ImageFilterOption(
 			optionTitle = "Titolo Esempio",
-			optionDescription = "Descrizione sempio"
+			optionDescription = "Descrizione esempio"
 		)
 		@ImageFilterOptionSlider(
 			optionSliderDefault = 50,
@@ -40,7 +43,7 @@ public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> 
 
 		@ImageFilterOption(
 			optionTitle = "Titolo Esempio 2",
-			optionDescription = "Descrizione sempio 2"
+			optionDescription = "Descrizione esempio 2"
 		)
 		@ImageFilterOptionFlags(
 			//optionFlagDefaults = { false, true, false },
@@ -51,7 +54,7 @@ public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> 
 
 		@ImageFilterOption(
 			optionTitle = "Titolo Esempio 3",
-			optionDescription = "Descrizione sempio 3"
+			optionDescription = "Descrizione esempio 3"
 		)
 		@ImageFilterOptionModes(
 			//optionModeDefault = 0,
@@ -59,6 +62,26 @@ public class ImageFilterExample extends ImageFilter<ImageFilterExampleSettings> 
 		)
 		@Getter
 		private int filterModes;
+
+		@ImageFilterOption(
+			optionTitle = "Titolo Esempio 4",
+			optionDescription = "Descrizione esempio 4"
+		)
+		@ImageFilterOptionColor(
+			optionColorDefault = 0xFF00FF
+		)
+		@Getter
+		private ImageColor filterColor;
+
+		@ImageFilterOption(
+			optionTitle = "Titolo Esempio 5",
+			optionDescription = "Descrizione esempio 5"
+		)
+		@ImageFilterOptionText(
+			optionTextMaxlen = 20
+		)
+		@Getter
+		private String filterText;
 
 	}
 

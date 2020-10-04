@@ -1,13 +1,13 @@
-package imageprocessing.filters;
+package imageprocessing.filter.container;
 
 import imageprocessing.accessor.ImageAccessor;
 import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilterRaster;
+import imageprocessing.filter.container.ImageFilterGreyscale.ImageFilterGreyscaleSettings;
 import imageprocessing.filter.option.ImageFilterOption;
 import imageprocessing.filter.option.ImageFilterSettings;
 import imageprocessing.ui.options.ImageFilterOptionUIModes.ImageFilterOptionModes;
 import lombok.Getter;
-import imageprocessing.filters.ImageFilterGreyscale.ImageFilterGreyscaleSettings;
 
 
 public class ImageFilterGreyscale extends ImageFilterRaster<ImageFilterGreyscaleSettings> {
@@ -18,9 +18,9 @@ public class ImageFilterGreyscale extends ImageFilterRaster<ImageFilterGreyscale
 
 	@Override
 	public void filterImagePixel(ImageFilterGreyscaleSettings filterSettings, ImageAccessor filterImage, int imagePixelX, int imagePixelY, ImageColor imagePixelColor) {
-		int channelR = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_R);
-		int channelG = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_G);
-		int channelB = imagePixelColor.getColorChannel(ImageColor.COLOR_CHANNEL_B);
+		int channelR = imagePixelColor.getColorChannelR();
+		int channelG = imagePixelColor.getColorChannelG();
+		int channelB = imagePixelColor.getColorChannelB();
 
 		//Formula found on https://www.rapidtables.com/convert/image/rgb-to-grayscale.html
 		int channelValue = 0;
@@ -31,9 +31,9 @@ public class ImageFilterGreyscale extends ImageFilterRaster<ImageFilterGreyscale
 		}
 
 		//On greyscale each channel has the same value because R = G = B
-		imagePixelColor.setColorChannel(ImageColor.COLOR_CHANNEL_R, channelValue);
-		imagePixelColor.setColorChannel(ImageColor.COLOR_CHANNEL_G, channelValue);
-		imagePixelColor.setColorChannel(ImageColor.COLOR_CHANNEL_B, channelValue);
+		imagePixelColor.setColorChannelR(channelValue);
+		imagePixelColor.setColorChannelG(channelValue);
+		imagePixelColor.setColorChannelB(channelValue);
 	}
 
 	public static class ImageFilterGreyscaleSettings extends ImageFilterSettings {

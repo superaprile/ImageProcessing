@@ -1,5 +1,7 @@
 package imageprocessing.accessor.structure;
 
+import javafx.scene.paint.Color;
+
 /**
  * Classe di rappresentazione di un colore.
  *
@@ -42,27 +44,49 @@ public class ImageColor {
 	/**
 	 * Inizializza il colore dai canali
 	 *
-	 * @param colorChannelA	Il canale alfa (0 - 255)
-	 * @param colorChannelR Il canale rosso (0 - 255)
-	 * @param colorChannelG Il canale verde (0 - 255)
-	 * @param colorChannelB Il canale blu (0 - 255)
+	 * @param colorChannelA	Il canale a (0 - 255)
+	 * @param colorChannelR Il canale r (0 - 255)
+	 * @param colorChannelG Il canale g (0 - 255)
+	 * @param colorChannelB Il canale b (0 - 255)
 	 */
 	public ImageColor(int colorChannelA, int colorChannelR, int colorChannelG, int colorChannelB) {
-		colorChannels = new int[] { colorChannelA, colorChannelR, colorChannelG, colorChannelB };
+		colorChannels = new int[] {
+			colorChannelHook(colorChannelA),
+			colorChannelHook(colorChannelR),
+			colorChannelHook(colorChannelG),
+			colorChannelHook(colorChannelB)
+		};
 	}
 
 	/**
 	 * Inizializza il colore dai canali
 	 *
-	 * @param colorChannelR Il canale rosso (0 - 255)
-	 * @param colorChannelG Il canale verde (0 - 255)
-	 * @param colorChannelB Il canale blu (0 - 255)
+	 * @param colorChannelR Il canale r (0 - 255)
+	 * @param colorChannelG Il canale g (0 - 255)
+	 * @param colorChannelB Il canale b (0 - 255)
 	 *
 	 */
 	public ImageColor(int colorChannelR, int colorChannelG, int colorChannelB) {
 		this(0xFF, colorChannelR, colorChannelG, colorChannelB);
 	}
 
+	public void mulColorChannelSpin(int colorChannel, double colorChannelFactor) {
+		setColorChannel(colorChannel, colorChannelHook((int) (getColorChannel(colorChannel) * colorChannelFactor)));
+	}
+
+	public void mulColorChannelSpinA(double colorChannelFactor) { mulColorChannelSpin(COLOR_CHANNEL_A, colorChannelFactor); }
+	public void mulColorChannelSpinR(double colorChannelFactor) { mulColorChannelSpin(COLOR_CHANNEL_R, colorChannelFactor); }
+	public void mulColorChannelSpinG(double colorChannelFactor) { mulColorChannelSpin(COLOR_CHANNEL_G, colorChannelFactor); }
+	public void mulColorChannelSpinB(double colorChannelFactor) { mulColorChannelSpin(COLOR_CHANNEL_B, colorChannelFactor); }
+
+	public void mulColorChannelHook(int colorChannel, double colorChannelFactor) {
+		setColorChannel(colorChannel, colorChannelSpin((int) (getColorChannel(colorChannel) * colorChannelFactor)));
+	}
+
+	public void mulColorChannelHookA(double colorChannelFactor) { mulColorChannelHook(COLOR_CHANNEL_A, colorChannelFactor); }
+	public void mulColorChannelHookR(double colorChannelFactor) { mulColorChannelHook(COLOR_CHANNEL_R, colorChannelFactor); }
+	public void mulColorChannelHookG(double colorChannelFactor) { mulColorChannelHook(COLOR_CHANNEL_G, colorChannelFactor); }
+	public void mulColorChannelHookB(double colorChannelFactor) { mulColorChannelHook(COLOR_CHANNEL_B, colorChannelFactor); }
 
 	/**
 	 * Aggiunge un valore al canale specificato.
@@ -74,8 +98,13 @@ public class ImageColor {
 	 * @see #colorChannelSpin(int)
 	 */
 	public void addColorChannelSpin(int colorChannel, int colorChannelValue) {
-		colorChannels[colorChannel] = colorChannelSpin(colorChannels[colorChannel] + colorChannelValue);
+		setColorChannel(colorChannel, colorChannelSpin(colorChannels[colorChannel] + colorChannelValue));
 	}
+
+	public void addColorChannelSpinA(int colorChannelValue) { addColorChannelSpin(COLOR_CHANNEL_A, colorChannelValue); }
+	public void addColorChannelSpinR(int colorChannelValue) { addColorChannelSpin(COLOR_CHANNEL_R, colorChannelValue); }
+	public void addColorChannelSpinG(int colorChannelValue) { addColorChannelSpin(COLOR_CHANNEL_G, colorChannelValue); }
+	public void addColorChannelSpinB(int colorChannelValue) { addColorChannelSpin(COLOR_CHANNEL_B, colorChannelValue); }
 
 	/**
 	 * Aggiunge un valore al canale specificato.
@@ -87,7 +116,25 @@ public class ImageColor {
 	 * @see #colorChannelHook(int)
 	 */
 	public void addColorChannelHook(int colorChannel, int colorChannelValue) {
-		colorChannels[colorChannel] = colorChannelHook(colorChannels[colorChannel] + colorChannelValue);
+		setColorChannel(colorChannel, colorChannelHook(colorChannels[colorChannel] + colorChannelValue));
+	}
+
+	public void addColorChannelHookA(int colorChannelValue) { addColorChannelHook(COLOR_CHANNEL_A, colorChannelValue); }
+	public void addColorChannelHookR(int colorChannelValue) { addColorChannelHook(COLOR_CHANNEL_R, colorChannelValue); }
+	public void addColorChannelHookG(int colorChannelValue) { addColorChannelHook(COLOR_CHANNEL_G, colorChannelValue); }
+	public void addColorChannelHookB(int colorChannelValue) { addColorChannelHook(COLOR_CHANNEL_B, colorChannelValue); }
+
+	/**
+	 * Aggiunge a questo colore un colore
+	 *
+	 * @param color			Il colore d'aggiungere
+	 * @param colorAlpha	Se l'intesità deve essere regolata dal canale alfa
+	 */
+	public void addColor(ImageColor color, boolean colorAlpha) {
+		double colorIntensity = colorAlpha ? color.getColorChannel(COLOR_CHANNEL_A) / 255D : 1;
+		addColorChannelHook(COLOR_CHANNEL_R, (int) (color.getColorChannel(COLOR_CHANNEL_R) * colorIntensity));
+		addColorChannelHook(COLOR_CHANNEL_G, (int) (color.getColorChannel(COLOR_CHANNEL_G) * colorIntensity));
+		addColorChannelHook(COLOR_CHANNEL_B, (int) (color.getColorChannel(COLOR_CHANNEL_B) * colorIntensity));
 	}
 
 	/**
@@ -95,11 +142,32 @@ public class ImageColor {
 	 * Il metodo utilizza la normalizzazione con {@link #colorChannelHook(int)}
 	 *
 	 * @param colorChannel			L'indice del canale da modificare
-	 * @param colorChannelValue		Il valore del canale
+	 * @param colorChannelValue		Il valore del canale (range 0-255)
 	 */
 	public void setColorChannel(int colorChannel, int colorChannelValue) {
 		colorChannels[colorChannel] = colorChannelHook(colorChannelValue);
 	}
+
+	public void setColorChannelA(int colorChannelValue) { setColorChannel(COLOR_CHANNEL_A, colorChannelValue); }
+	public void setColorChannelR(int colorChannelValue) { setColorChannel(COLOR_CHANNEL_R, colorChannelValue); }
+	public void setColorChannelG(int colorChannelValue) { setColorChannel(COLOR_CHANNEL_G, colorChannelValue); }
+	public void setColorChannelB(int colorChannelValue) { setColorChannel(COLOR_CHANNEL_B, colorChannelValue); }
+
+	/**
+	 * Imposta un valore al canale specificato
+	 * Il metodo utilizza la normalizzazione con {@link #colorChannelHook(int)}
+	 *
+	 * @param colorChannel			L'indice del canale da modificare
+	 * @param colorChannelValue		Il valore del canale (range 0-1)
+	 */
+	public void setColorChannel(int colorChannel, double colorChannelValue) {
+		colorChannels[colorChannel] = colorChannelHook((int) (colorChannelValue * 255D));
+	}
+
+	public void setColorChannelA(double colorChannelValue) { setColorChannel(COLOR_CHANNEL_A, colorChannelValue); }
+	public void setColorChannelR(double colorChannelValue) { setColorChannel(COLOR_CHANNEL_R, colorChannelValue); }
+	public void setColorChannelG(double colorChannelValue) { setColorChannel(COLOR_CHANNEL_G, colorChannelValue); }
+	public void setColorChannelB(double colorChannelValue) { setColorChannel(COLOR_CHANNEL_B, colorChannelValue); }
 
 	/**
 	 * Imposta il colore copiandolo da un altro
@@ -117,9 +185,7 @@ public class ImageColor {
 	 */
 	public void setColor(int colorCompact) {
 		int[] colorCompactChannels = colorExplode(colorCompact);
-		for (int colorChannelIndex = 0; colorChannelIndex < colorChannels.length; colorChannelIndex++) {
-			colorChannels[colorChannelIndex] = colorCompactChannels[colorChannelIndex];
-		}
+		System.arraycopy(colorCompactChannels, 0, colorChannels, 0, 4);
 	}
 
 	/**
@@ -133,6 +199,11 @@ public class ImageColor {
 		return colorChannels[colorChannel];
 	}
 
+	public int getColorChannelA() {	return getColorChannel(COLOR_CHANNEL_A); }
+	public int getColorChannelR() { return getColorChannel(COLOR_CHANNEL_R); }
+	public int getColorChannelG() { return getColorChannel(COLOR_CHANNEL_G); }
+	public int getColorChannelB() {	return getColorChannel(COLOR_CHANNEL_B); }
+
 	/**
 	 * Ritorna il valore del canale specificato
 	 *
@@ -144,6 +215,10 @@ public class ImageColor {
 		return colorChannels[colorChannel] / 255D;
 	}
 
+	public double getColorChannelNormalA() { return getColorChannelNormal(COLOR_CHANNEL_A); }
+	public double getColorChannelNormalR() { return getColorChannelNormal(COLOR_CHANNEL_R); }
+	public double getColorChannelNormalG() { return getColorChannelNormal(COLOR_CHANNEL_G); }
+	public double getColorChannelNormalB() { return getColorChannelNormal(COLOR_CHANNEL_B); }
 
 	/**
 	 * Normalizza il valore del canale.
@@ -205,6 +280,20 @@ public class ImageColor {
 		colorChannels[COLOR_CHANNEL_R] = 0xFF - colorChannels[COLOR_CHANNEL_R];
 		colorChannels[COLOR_CHANNEL_G] = 0xFF - colorChannels[COLOR_CHANNEL_G];
 		colorChannels[COLOR_CHANNEL_B] = 0xFF - colorChannels[COLOR_CHANNEL_B];
+	}
+
+	/**
+	 * Converte il colore in un colore di JavaFX
+	 *
+	 * @return Il colore convertito
+	 */
+	public Color toColor() {
+		return new Color(
+			colorChannels[COLOR_CHANNEL_R] / 255D,
+			colorChannels[COLOR_CHANNEL_G] / 255D,
+			colorChannels[COLOR_CHANNEL_B] / 255D,
+			colorChannels[COLOR_CHANNEL_A] / 255D
+		);
 	}
 
 	/**

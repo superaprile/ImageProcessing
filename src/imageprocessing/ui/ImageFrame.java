@@ -33,6 +33,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -298,6 +299,19 @@ public class ImageFrame {
 			double x = (ipImageView.getWidth() - imageWidth) / 2;
 
 			context.clearRect(0, 0, ipImageView.getWidth(), ipImageView.getHeight());
+
+			Color f1 = Color.DARKGRAY;
+			Color f2 = Color.DARKGRAY.darker();
+			int bs = 10;
+
+			for (int xx = 0; xx <= ipImageView.getWidth() / bs; xx++) {
+				for (int yy = 0; yy <= ipImageView.getHeight() / bs; yy++) {
+
+					context.setFill(xx % 2 != yy % 2 ? f1 : f2);
+					context.fillRect(xx * bs, yy * bs, bs, bs);
+				}
+			}
+
 			context.drawImage(ipImageConverted, x, y, imageWidth, imageHeight);
 		}
 
