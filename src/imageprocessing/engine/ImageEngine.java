@@ -12,11 +12,13 @@ import imageprocessing.filters.ImageFilterBorder;
 import imageprocessing.filters.ImageFilterContrast;
 import imageprocessing.filters.ImageFilterEdge;
 import imageprocessing.filters.ImageFilterExample;
+import imageprocessing.filters.ImageFilterFading;
 import imageprocessing.filters.ImageFilterFlag;
 import imageprocessing.filters.ImageFilterFlip;
 import imageprocessing.filters.ImageFilterGreyscale;
 import imageprocessing.filters.ImageFilterInverter;
 import imageprocessing.filters.ImageFilterMatrix;
+import imageprocessing.filters.ImageFilterMirror;
 import imageprocessing.filters.ImageFilterSepia;
 import imageprocessing.filters.ImageFilterVignette;
 import imageprocessing.ui.options.ImageFilterOptionUIBuilder;
@@ -35,10 +37,12 @@ public class ImageEngine {
 		new ImageFilterFlag(),
 		new ImageFilterFlip(),
 		new ImageFilterGreyscale(),
+		new ImageFilterVignette(),
 		new ImageFilterInverter(),
 		new ImageFilterMatrix(),
+		new ImageFilterMirror(),
+		new ImageFilterFading(),
 		new ImageFilterSepia(),
-		new ImageFilterVignette(),
 		new ImageFilterBorder()
 	};
 
