@@ -1,10 +1,10 @@
-package imageprocessing.filters;
+package imageprocessing.filter.container;
 
 import imageprocessing.accessor.ImageAccessor;
 import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilterRaster;
+import imageprocessing.filter.container.ImageFilterInverter.ImageFilterInverterSettings;
 import imageprocessing.filter.option.ImageFilterSettings;
-import imageprocessing.filters.ImageFilterInverter.ImageFilterInverterSettings;
 
 
 public class ImageFilterInverter extends ImageFilterRaster<ImageFilterInverterSettings> {

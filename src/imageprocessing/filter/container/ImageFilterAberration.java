@@ -1,11 +1,11 @@
-package imageprocessing.filters;
+package imageprocessing.filter.container;
 
 import imageprocessing.accessor.ImageAccessor;
 import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilterRaster;
+import imageprocessing.filter.container.ImageFilterAberration.ImageFilterAberrationSettings;
 import imageprocessing.filter.option.ImageFilterOption;
 import imageprocessing.filter.option.ImageFilterSettings;
-import imageprocessing.filters.ImageFilterAberration.ImageFilterAberrationSettings;
 import imageprocessing.ui.options.ImageFilterOptionUISlider.ImageFilterOptionSlider;
 import lombok.Getter;
 
@@ -21,14 +21,8 @@ public class ImageFilterAberration extends ImageFilterRaster<ImageFilterAberrati
 		ImageColor imagePixelR = filterImage.getImagePixel((int) (imagePixelX + filterSettings.getFilterOffset()), imagePixelY);
 		ImageColor imagePixelL = filterImage.getImagePixel((int) (imagePixelX - filterSettings.getFilterOffset()), imagePixelY);
 
-		if (imagePixelR != null)  {
-			imagePixelColor.addColorChannelHook(ImageColor.COLOR_CHANNEL_R,
-				(int) (imagePixelR.getColorChannel(ImageColor.COLOR_CHANNEL_R) * filterSettings.getFilterIntensity()));
-		}
-		if (imagePixelL != null) {
-			imagePixelColor.addColorChannelHook(ImageColor.COLOR_CHANNEL_B,
-				(int) (imagePixelL.getColorChannel(ImageColor.COLOR_CHANNEL_B) * filterSettings.getFilterIntensity()));
-		}
+		if (imagePixelR != null) imagePixelColor.mulColorChannelHookR(filterSettings.getFilterIntensity());
+		if (imagePixelL != null) imagePixelColor.mulColorChannelHookB(filterSettings.getFilterIntensity());
 
 	}
 
