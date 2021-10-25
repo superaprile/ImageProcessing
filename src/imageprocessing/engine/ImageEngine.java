@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import imageprocessing.accessor.ImageAccessorBuffered;
 import imageprocessing.filter.ImageFilter;
 import imageprocessing.filter.container.ImageFilterAberration;
+import imageprocessing.filter.container.ImageFilterBAW;
 import imageprocessing.filter.container.ImageFilterBorder;
 import imageprocessing.filter.container.ImageFilterContrast;
 import imageprocessing.filter.container.ImageFilterEdge;
@@ -43,7 +44,8 @@ public class ImageEngine {
 		new ImageFilterMirror(),
 		new ImageFilterFading(),
 		new ImageFilterSepia(),
-		new ImageFilterBorder()
+		new ImageFilterBorder(),
+		new ImageFilterBAW()
 	};
 
 	private ImageFilter<?> imageFilter;
