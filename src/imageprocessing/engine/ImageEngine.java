@@ -20,6 +20,7 @@ import imageprocessing.filter.container.ImageFilterInverter;
 import imageprocessing.filter.container.ImageFilterMatrix;
 import imageprocessing.filter.container.ImageFilterMirror;
 import imageprocessing.filter.container.ImageFilterSepia;
+import imageprocessing.filter.container.ImageFilterShift;
 import imageprocessing.filter.container.ImageFilterVignette;
 import imageprocessing.filter.option.ImageFilterSettings;
 import imageprocessing.ui.options.ImageFilterOptionUIBuilder;
@@ -45,7 +46,8 @@ public class ImageEngine {
 		new ImageFilterFading(),
 		new ImageFilterSepia(),
 		new ImageFilterBorder(),
-		new ImageFilterBAW()
+		new ImageFilterBAW(),
+		new ImageFilterShift()
 	};
 
 	private ImageFilter<?> imageFilter;
