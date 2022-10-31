@@ -1,12 +1,12 @@
 package imageprocessing.filter.container;
 
+import java.time.LocalDateTime;
+
 import imageprocessing.accessor.ImageAccessor;
 import imageprocessing.accessor.structure.ImageColor;
 import imageprocessing.filter.ImageFilterRaster;
 import imageprocessing.filter.container.ImageFilterRandom2.ImageFilterRandom2Settings;
 import imageprocessing.filter.option.ImageFilterSettings;
-
-import java.time.LocalDateTime;
 
 
 public class ImageFilterRandom2 extends ImageFilterRaster<ImageFilterRandom2Settings> {
