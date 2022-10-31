@@ -6,8 +6,6 @@ import imageprocessing.filter.ImageFilterRaster;
 import imageprocessing.filter.container.ImageFilterGreen.ImageFilterGreenSettings;
 import imageprocessing.filter.option.ImageFilterSettings;
 
-import java.time.LocalDateTime;
-
 
 public class ImageFilterGreen extends ImageFilterRaster<ImageFilterGreenSettings> {
 

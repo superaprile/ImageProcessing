@@ -6,8 +6,6 @@ import imageprocessing.filter.ImageFilterRaster;
 import imageprocessing.filter.container.ImageFilterRandom3.ImageFilterRandom3Settings;
 import imageprocessing.filter.option.ImageFilterSettings;
 
-import java.time.LocalDateTime;
-
 
 public class ImageFilterRandom3 extends ImageFilterRaster<ImageFilterRandom3Settings> {
 
